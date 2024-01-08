@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="text-align: center;margin-top: 70px;"> Student Details</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Email Address</th>
+                <th>Age</th>
+                <th>Joining Date</th>
+                <th>Course</th>
+                <th>Course fee</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{s.student_name}}</a></td>
+                <td>{{s.student_address}}</td>
+                <td>{{s.student_age}}</td>
+                <td>{{s.joining_date}}</td>
+                <td>{{s.course.course_name}}</td>
+                <td>{{s.course.fee}}</td>
+                <td><a href="{% url 'edit' s.id %}">Edit</a></td>
+                <td><a href="{% url 'delete' s.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   
+    {% endblock %}
